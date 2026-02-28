@@ -1,6 +1,6 @@
 # WGCNA HITL Agent (Lab Workflow)
 
-This repository contains a reusable, human-in-the-loop (HITL) WGCNA workflow that can be run through Codex as an agent or rerun non-interactively with R scripts.
+This repository contains a reusable, human-in-the-loop (HITL) Weighted Gene Co-expression Network Analysis (WGCNA) workflow that can be run through Codex as an agent or rerun non-interactively with R scripts.
 
 ## What Is Included
 

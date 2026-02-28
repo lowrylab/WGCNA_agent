@@ -2,6 +2,8 @@
 
 This repository contains a reusable, human-in-the-loop (HITL) Weighted Gene Co-expression Network Analysis (WGCNA) workflow that can be run through Codex as an agent or rerun non-interactively with R scripts.
 
+WGCNA is a challenging application to use for most users. This goal of this agent is to lower the threshold of difficulty for conducting gene network analyses using WGCNA. 
+
 ## What Is Included
 
 - Skill definition (the agent behavior):

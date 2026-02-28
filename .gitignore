@@ -1,0 +1,14 @@
+# macOS / editor noise
+.DS_Store
+
+# Python virtual env
+.venv/
+__pycache__/
+*.pyc
+
+# Large run artifacts (keep scripts + skill, skip per-run outputs)
+results/
+data/
+
+# Optional local logs
+*.log

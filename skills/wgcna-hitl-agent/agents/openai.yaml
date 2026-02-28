@@ -1,0 +1,7 @@
+interface:
+  display_name: "WGCNA HITL Agent"
+  short_description: "Stepwise WGCNA with human checkpoints"
+  default_prompt: "Use $wgcna-hitl-agent to run WGCNA in gated stages with explicit approval checkpoints."
+
+policy:
+  allow_implicit_invocation: true

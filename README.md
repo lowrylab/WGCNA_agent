@@ -149,6 +149,34 @@ R packages:
 Python (for decision logger):
 - Python 3.x
 
+## Key References
+
+1. Zhang B, Horvath S. (2005). *A General Framework for Weighted Gene Co-Expression Network Analysis*. **Statistical Applications in Genetics and Molecular Biology**, 4(1):Article17. DOI: `10.2202/1544-6115.1128`  
+   Link: [PubMed](https://pubmed.ncbi.nlm.nih.gov/16646834/)
+
+2. Langfelder P, Horvath S. (2008). *WGCNA: an R package for weighted correlation network analysis*. **BMC Bioinformatics**, 9:559. DOI: `10.1186/1471-2105-9-559`  
+   Link: [BMC](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-559)
+
+3. Langfelder P, Zhang B, Horvath S. (2008). *Defining clusters from a hierarchical cluster tree: the Dynamic Tree Cut package for R*. **Bioinformatics**, 24(5):719-720. DOI: `10.1093/bioinformatics/btm563`  
+   Link: [PubMed](https://pubmed.ncbi.nlm.nih.gov/18024473/)
+
+4. Langfelder P, Horvath S. (2007). *Eigengene networks for studying the relationships between co-expression modules*. **BMC Systems Biology**, 1:54. DOI: `10.1186/1752-0509-1-54`  
+   Link: [BMC](https://bmcsystbiol.biomedcentral.com/articles/10.1186/1752-0509-1-54)
+
+5. Langfelder P, Luo R, Oldham MC, Horvath S. (2011). *Is my network module preserved and reproducible?* **PLoS Computational Biology**, 7(1):e1001057. DOI: `10.1371/journal.pcbi.1001057`  
+   Link: [PubMed](https://pubmed.ncbi.nlm.nih.gov/21283776/)
+
+6. Langfelder P, Horvath S. (2012). *Fast R Functions for Robust Correlations and Hierarchical Clustering*. **Journal of Statistical Software**, 46(11):1-17. DOI: `10.18637/jss.v046.i11`  
+   Link: [PubMed](https://pubmed.ncbi.nlm.nih.gov/23050260/)
+
+### Software / Documentation References
+
+1. WGCNA package manual (CRAN/r-universe; current reference documentation)  
+   Link: [WGCNA Manual](https://cran.r-universe.dev/WGCNA/doc/manual.html)
+
+2. Official WGCNA tutorial mirror (community-hosted copy of original tutorial docs)  
+   Link: [WGCNA Official Documentation Mirror](https://edo98811.github.io/WGCNA_official_documentation/)
+
 ## Repository Usage for Lab Members
 
 1. Clone the repo.
@@ -169,4 +197,3 @@ Avoid committing:
 - Large raw datasets (`data/`)
 - Per-run intermediate outputs (`results/`)
 - Local virtual environments (`.venv/`)
-

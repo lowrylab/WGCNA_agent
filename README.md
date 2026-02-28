@@ -3,8 +3,8 @@
 This repository contains a reusable, human-in-the-loop (HITL) Weighted Gene Co-expression Network Analysis (WGCNA) workflow that can be run through Codex as an agent or rerun non-interactively with R scripts.
 
 WGCNA is a challenging application for most users. This goal of this agent is to lower the threshold of difficulty for conducting gene network analyses using WGCNA. 
-**
-Key WGCNA References**
+
+# Key WGCNA References
 Zhang B, Horvath S. (2005). A General Framework for Weighted Gene Co-Expression Network Analysis. Statistical Applications in Genetics and Molecular Biology, 4(1):Article17. DOI: 10.2202/1544-6115.1128
 Link: PubMed
 
@@ -23,7 +23,7 @@ Link: PubMed
 Langfelder P, Horvath S. (2012). Fast R Functions for Robust Correlations and Hierarchical Clustering. Journal of Statistical Software, 46(11):1-17. DOI: jss.v046.i11
 Link: PubMed
 
-**Software / Documentation References****
+# Software / Documentation References
 WGCNA package manual (CRAN/r-universe; current reference documentation)
 Link: WGCNA Manual
 

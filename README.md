@@ -2,7 +2,34 @@
 
 This repository contains a reusable, human-in-the-loop (HITL) Weighted Gene Co-expression Network Analysis (WGCNA) workflow that can be run through Codex as an agent or rerun non-interactively with R scripts.
 
-WGCNA is a challenging application to use for most users. This goal of this agent is to lower the threshold of difficulty for conducting gene network analyses using WGCNA. 
+WGCNA is a challenging application for most users. This goal of this agent is to lower the threshold of difficulty for conducting gene network analyses using WGCNA. 
+**
+Key WGCNA References**
+Zhang B, Horvath S. (2005). A General Framework for Weighted Gene Co-Expression Network Analysis. Statistical Applications in Genetics and Molecular Biology, 4(1):Article17. DOI: 10.2202/1544-6115.1128
+Link: PubMed
+
+Langfelder P, Horvath S. (2008). WGCNA: an R package for weighted correlation network analysis. BMC Bioinformatics, 9:559. DOI: 10.1186/1471-2105-9-559
+Link: BMC
+
+Langfelder P, Zhang B, Horvath S. (2008). Defining clusters from a hierarchical cluster tree: the Dynamic Tree Cut package for R. Bioinformatics, 24(5):719-720. DOI: 10.1093/bioinformatics/btm563
+Link: PubMed
+
+Langfelder P, Horvath S. (2007). Eigengene networks for studying the relationships between co-expression modules. BMC Systems Biology, 1:54. DOI: 10.1186/1752-0509-1-54
+Link: BMC
+
+Langfelder P, Luo R, Oldham MC, Horvath S. (2011). Is my network module preserved and reproducible? PLoS Computational Biology, 7(1):e1001057. DOI: 10.1371/journal.pcbi.1001057
+Link: PubMed
+
+Langfelder P, Horvath S. (2012). Fast R Functions for Robust Correlations and Hierarchical Clustering. Journal of Statistical Software, 46(11):1-17. DOI: jss.v046.i11
+Link: PubMed
+
+**Software / Documentation References****
+WGCNA package manual (CRAN/r-universe; current reference documentation)
+Link: WGCNA Manual
+
+Official WGCNA tutorial mirror (community-hosted copy of original tutorial docs)
+Link: WGCNA Official Documentation Mirror
+
 
 ## What Is Included
 

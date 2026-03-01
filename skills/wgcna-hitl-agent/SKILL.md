@@ -56,6 +56,12 @@ description: Build and run a human-in-the-loop gene co-expression analysis workf
 - Plotting guardrail: if strata are sparse and line plots warn about single-observation groups, use points plus error bars (or point-only summaries) to avoid misleading line continuity.
 - Stage 6 output policy: always produce both strict and balanced candidate counts before Gate F approval.
 - Stage 6 curation default: when strict or balanced hub lists are too large, offer capped exports (for example top `N` per module-trait pair ranked by `|kME|*|GS|`).
+- Module preservation guardrail: before `modulePreservation`, run per-set QC (`goodSamplesGenes`) and remove zero-variance genes within each set; use the intersection of valid genes across sets.
+- Module preservation fallback: if full preservation is too slow, run an explicit approximate mode (top variable genes + lower permutations), label outputs as approximate, and write run notes with genes used and permutation count.
+- Module preservation plotting default: for manuscript-facing preservation figures, exclude control modules (`gold`, `grey`) unless explicitly requested.
+- Module preservation export guardrail: do not assume optional columns (for example `medianRank.pres`) are present; export available columns defensively.
+- Effects plotting default: support `Extractionpoint x Genotype` module and gene plots as first-class outputs (combined panel, per-feature plots, and interaction-stats table).
+- Largest-module plotting default: provide a reusable option to plot effects for the top `N` largest non-grey modules by gene count.
 - Session resilience default: maintain a local chat log and stage summary file in the project directory so work can resume after UI/thread loss.
 
 ## Deliverable Format

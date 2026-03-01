@@ -32,6 +32,16 @@ Capture practical defaults and caveats from a completed WGCNA HITL run so future
 ## Plotting Lessons
 - For sparse combinations in interaction plots (especially 3-way stratifications), line geoms may warn because groups have single observations.
 - Prefer point + error bar summaries (or remove connecting lines) for those sparse strata to avoid over-interpreting trajectories.
+- For trait-focused reruns, `Extractionpoint x Genotype` effects plots are often the most interpretable default at both module and gene levels.
+- Include both combined panels and per-feature plots, plus a companion interaction-stats table.
+- Support plotting top `N` largest non-grey modules by size as a reusable summary figure pattern.
+
+## Module Preservation Lessons
+- `modulePreservation` can fail unless each set is pre-filtered with `goodSamplesGenes` and zero-variance genes are removed per set.
+- Use the intersection of valid genes across all preservation sets before running statistics.
+- For long runs, use an explicit approximate fallback (variable-gene subset + lower permutations) and label outputs as approximate.
+- `gold` and `grey` are control/unassigned modules and should usually be excluded from manuscript-facing Zsummary figures.
+- Preservation output structures can vary; export code should only use columns that are present (for example do not hard-require `medianRank.pres`).
 
 ## Session Resilience Lessons
 - Do not rely on UI thread persistence for long analyses.

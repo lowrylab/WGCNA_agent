@@ -45,12 +45,18 @@ description: Build and run a human-in-the-loop gene co-expression analysis workf
 ## Run-Calibrated Defaults
 
 - Input shape guardrail: if expression CSV has embedded metadata rows at top (for example `sample name`, `Library_Pool`, `Primer`, `genotype`, `development_stage`), strip these rows before count-matrix construction.
-- Alignment guardrail: enforce `metadata.sample_number` match to expression sample columns; fail fast if any sample is unmatched.
+- Alignment guardrail: enforce exact metadata-to-expression sample ID alignment using the user-confirmed sample ID column (for example `sample_name`); report duplicates and unmatched IDs before Stage 1.
+- Duplicate-column guardrail: if expression sample columns are duplicated, default to keeping the first occurrence and report all duplicate IDs at Gate A.
+- Gene-ID guardrail: support prefix matching for user-provided gene IDs that omit version suffixes (for example `Pavir.*` matched to `Pavir.*.v6.1`) and report whether matches are exact or prefix-based.
 - Stage 2 default for raw counts: prefer `DESeq2::vst` for first-pass WGCNA normalization unless user requests an alternative.
 - Stage 3 baseline options: compare signed and signed-hybrid; if both are acceptable, prefer lower-power choice with adequate fit and connectivity.
+- Stage 3 runtime fallback: if full-gene `pickSoftThreshold` is prohibitively slow, calibrate power on a top-variable-gene subset (for example 8,000 genes) and disclose this in Gate C.
 - Stage 5 interpretation guardrail: clarify that baseline factor levels (for example `2leaf`) are reference levels and therefore not emitted as explicit dummy columns.
 - Stage 5 reporting default: for binary genotype factors, prefer one contrast column (for example `genotypeInland`) to avoid duplicate anti-correlated interpretations.
+- Plotting guardrail: if strata are sparse and line plots warn about single-observation groups, use points plus error bars (or point-only summaries) to avoid misleading line continuity.
 - Stage 6 output policy: always produce both strict and balanced candidate counts before Gate F approval.
+- Stage 6 curation default: when strict or balanced hub lists are too large, offer capped exports (for example top `N` per module-trait pair ranked by `|kME|*|GS|`).
+- Session resilience default: maintain a local chat log and stage summary file in the project directory so work can resume after UI/thread loss.
 
 ## Deliverable Format
 
@@ -73,3 +79,5 @@ Use `assets/templates/stage-deliverable-template.md` if a concrete scaffold is n
 
 - Use `scripts/append_decision_log.py` to append checkpoint decisions in a consistent format.
 - Run `python scripts/append_decision_log.py --help` for full argument details.
+- Use `scripts/export_resume_snapshot.py` near run end to generate `wgcna_resume_snapshot.md` for reliable session restart.
+- Run `python scripts/export_resume_snapshot.py --help` for full argument details.

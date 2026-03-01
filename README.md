@@ -1,4 +1,4 @@
-# WGCNA HITL Agent (Lab Workflow)
+# WGCNA HITL Agent (Workflow)
 
 This repository contains a reusable, human-in-the-loop (HITL) Weighted Gene Co-expression Network Analysis (WGCNA) workflow that can be run through Codex as an agent or rerun non-interactively with R scripts.
 
@@ -150,7 +150,7 @@ Python (for decision logger):
 2. Official WGCNA tutorial mirror (community-hosted copy of original tutorial docs)  
    Link: [WGCNA Official Documentation Mirror](https://edo98811.github.io/WGCNA_official_documentation/)
 
-## Repository Usage for Lab Members
+## Repository Usage
 
 1. Clone the repo.
 2. Install required R packages.

@@ -10,6 +10,9 @@ description: Build and run a human-in-the-loop gene co-expression analysis workf
 1. Confirm analysis context.
 - Capture species, expression units, sample count, trait table availability, and whether data are bulk RNA-seq, microarray, or single-cell pseudobulk.
 - If context is incomplete, state assumptions before writing code.
+- Capture the absolute path(s) of source data files and determine the source data directory.
+- Before Stage 1, create a new run-specific output directory inside the source data directory (for example `wgcna_hitl_outputs` or `wgcna_hitl_outputs_<YYYYMMDD_HHMMSS>`), preferably via `scripts/init_output_dir.py`.
+- Write all generated artifacts (tables, plots, logs, snapshots, reports) to that new output directory unless the user explicitly asks otherwise.
 
 2. Build a stepwise plan.
 - Follow the stage map in `references/workflow-map.md`.
@@ -33,6 +36,8 @@ description: Build and run a human-in-the-loop gene co-expression analysis workf
 - Prefer scriptable R steps over interactive-only actions.
 - Pin key package versions when feasible.
 - Emit exact code snippets needed to rerun each completed stage.
+- Maintain a cumulative, runnable R script for every run at `<output_dir>/wgcna_complete_run.R`.
+- After each stage is approved, append that stage's documented R code to the cumulative script.
 
 ## Execution Rules
 
@@ -41,6 +46,7 @@ description: Build and run a human-in-the-loop gene co-expression analysis workf
 - Validate trait/sample alignment before module-trait modeling.
 - Distinguish exploratory signals from statistically supported findings.
 - Flag small sample-size limitations and unstable module results.
+- R script export rule: always produce a complete documented R script in the run output directory that includes every executed stage, key parameters, and file paths.
 
 ## Run-Calibrated Defaults
 
@@ -56,6 +62,8 @@ description: Build and run a human-in-the-loop gene co-expression analysis workf
 - Plotting guardrail: if strata are sparse and line plots warn about single-observation groups, use points plus error bars (or point-only summaries) to avoid misleading line continuity.
 - Stage 6 output policy: always produce both strict and balanced candidate counts before Gate F approval.
 - Stage 6 curation default: when strict or balanced hub lists are too large, offer capped exports (for example top `N` per module-trait pair ranked by `|kME|*|GS|`).
+- Output location default: resolve output paths relative to the run-specific directory created under the source data directory; avoid writing final artifacts only to the skill workspace.
+- Script assembly default: write stage snippets as commented sections and append them in execution order to `<output_dir>/wgcna_complete_run.R`.
 - Module preservation guardrail: before `modulePreservation`, run per-set QC (`goodSamplesGenes`) and remove zero-variance genes within each set; use the intersection of valid genes across sets.
 - Module preservation fallback: if full preservation is too slow, run an explicit approximate mode (top variable genes + lower permutations), label outputs as approximate, and write run notes with genes used and permutation count.
 - Module preservation plotting default: for manuscript-facing preservation figures, exclude control modules (`gold`, `grey`) unless explicitly requested.
@@ -85,5 +93,17 @@ Use `assets/templates/stage-deliverable-template.md` if a concrete scaffold is n
 
 - Use `scripts/append_decision_log.py` to append checkpoint decisions in a consistent format.
 - Run `python scripts/append_decision_log.py --help` for full argument details.
+- Use `scripts/init_output_dir.py` during Stage 0 to create a run-specific output directory under the source data directory.
+- Example:
+  `python scripts/init_output_dir.py --input-file /abs/path/expression.csv --input-file /abs/path/metadata.csv`
+- Run `python scripts/init_output_dir.py --help` for full argument details.
+- After each stage, append documented R code into the cumulative run script.
+- Example command:
+  `cat <<'RS' >> "$OUTPUT_DIR/wgcna_complete_run.R"`
+  `# Stage N: <name>`
+  `# Inputs: <paths>`
+  `# Decisions: <approved options>`
+  `...R code...`
+  `RS`
 - Use `scripts/export_resume_snapshot.py` near run end to generate `wgcna_resume_snapshot.md` for reliable session restart.
 - Run `python scripts/export_resume_snapshot.py --help` for full argument details.

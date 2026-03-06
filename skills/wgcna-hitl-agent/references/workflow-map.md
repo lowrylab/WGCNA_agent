@@ -6,8 +6,10 @@ Use this flow for bulk transcriptomics or pseudobulk expression matrices where r
 ## Stage 0: Intake and Preconditions
 - Required inputs: expression matrix, metadata, trait table (or clear statement that trait analysis is deferred).
 - Validate: unique sample IDs, no duplicated genes after preprocessing, expected data scale.
+- Resolve source data directory from the provided input file paths.
+- Create a new run-specific output directory inside that source data directory before producing stage artifacts (prefer `scripts/init_output_dir.py`).
 - If expression file includes embedded metadata rows before genes, identify and remove those rows before numeric conversion.
-- Output: confirmed data contract and assumptions.
+- Output: confirmed data contract, assumptions, and finalized output directory path for all run artifacts.
 
 ## Stage 1: QC and Filtering
 - Detect sample outliers by clustering and missingness.
@@ -48,4 +50,5 @@ Use this flow for bulk transcriptomics or pseudobulk expression matrices where r
 ## Stage 7: Reporting and Reproducibility
 - Summarize final parameters and all human decisions.
 - Provide rerun-ready scripts and environment notes.
+- Verify and export a complete documented run script at `<output_dir>/wgcna_complete_run.R` containing all approved workflow stages.
 - Mark unresolved uncertainties and recommended follow-ups.
